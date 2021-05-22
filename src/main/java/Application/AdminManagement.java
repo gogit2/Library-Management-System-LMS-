@@ -1,5 +1,6 @@
 package Application;
 
+import Business.AdminService;
 import DAO.AdminDA;
 import entities.Admin;
 
@@ -26,6 +27,10 @@ public class AdminManagement {
         Admin admin = new Admin(3,"Mohamed ElSayed","+021582931204");
         ada.Update(admin);
 
+        // working with Business layer
+        AdminService adServ = new AdminService();
+//        adServ.SaveServ(new Admin(4,"Mohamed Hassan","+2012947027449"));
+        ada.Update(new Admin(4,"Mohamed Hassan","+201294702744"));
     }
 
 }
