@@ -1,18 +1,24 @@
 package entities;
 
-public class Admin {
+import java.util.ArrayList;
+
+public class Member {
 
     private int id;
     private String name;
     private String phone;
+    private String email;
+    private ArrayList<Book> books;
 
-    public Admin() {
+    public Member() {
     }
 
-    public Admin(int id, String name, String phone) {
+    public Member(int id, String name, String phone, String email) {
         this.id = id;
         this.name = name;
         this.phone = phone;
+        this.email = email;
+        this.books = new ArrayList<>();
     }
 
     public int getId() {
@@ -39,12 +45,30 @@ public class Admin {
         this.phone = phone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public ArrayList<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(ArrayList<Book> books) {
+        this.books = books;
+    }
+
     @Override
     public String toString() {
-        return "Admin{" +
+        return "Member{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", books=" + books +
                 '}';
     }
 }

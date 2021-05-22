@@ -1,6 +1,6 @@
 package Business;
 
-import DAO.AdminDA;
+import DAO.MemberMangement;
 import entities.Admin;
 
 import java.sql.SQLException;
@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 public class AdminService {
 
-    private final AdminDA adminDA;
+    private final MemberMangement adminDA;
 
     public AdminService() {
-        adminDA = new AdminDA();
+        adminDA = new MemberMangement();
     }
 
     public ArrayList<Admin> FindAllServ() throws SQLException{
