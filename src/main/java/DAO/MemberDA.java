@@ -1,6 +1,8 @@
 package DAO;
 
+import Business.BookService;
 import DataAccess.ConnectionManger;
+import entities.Book;
 import entities.Member;
 
 import java.sql.*;
@@ -178,6 +180,82 @@ public class MemberDA implements BaseDA<Member> {
 
     }
 
+    public void addFavBooks(int mem_id, int book_id)throws SQLException {
+//        ArrayList<Book> booksList = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement prStmt = null;
+
+        try {
+            conn = ConnectionManger.getConnection();
+            String sqlQuery = "insert into member_book "
+                    + "(MemberID, BookId) "
+                    + "values (?, ?)";
+            prStmt = conn.prepareStatement(sqlQuery);
+            prStmt.setInt(1, mem_id);
+            prStmt.setInt(2, book_id);
+            prStmt.executeUpdate();
+            System.out.println("done ........ executed");
+        }
+        finally {
+            Close(conn,prStmt,null);
+        }
+
+//        return booksList;
+    }
+
+    public ArrayList<Book> showFavBooks(int mem_id)throws SQLException {
+
+//        Member mem = new Member();
+        ArrayList<Book> bookList = new ArrayList<>();
+        BookService bookService = new BookService();
+
+        // db connection
+        Connection conn = null;
+        Statement stm = null;
+        ResultSet resSet = null;
+
+        try {
+            // get db connection
+            conn = ConnectionManger.getConnection();
+            stm = conn.createStatement();
+            String sqlStrQuery = "select * from member_book where MemberID="+mem_id;
+            resSet = stm.executeQuery(sqlStrQuery);
+
+            // getting admin list data
+            while (resSet.next()) {
+                int id = resSet.getInt("BookId");
+                // String nm = resSet.getString(2);
+                Book tempBook = bookService.FindBookByIdServ(id);
+                bookList.add(tempBook);
+//                System.out.println(">::: "+tempBook.getName());
+            }
+//            mem.setBooks(bookList);
+            return bookList;
+        } finally {
+            // start closing JDBC objects
+            Close(conn, stm, resSet);
+        }
+    }
+
+    public void deleteBooks(int mem_id, int book_id)throws SQLException {
+
+        // db connection
+        Connection conn = null;
+        PreparedStatement stm = null;
+
+        try {
+            conn = ConnectionManger.getConnection();
+            String sqlQuery = "delete from member_book where MemberID=? and BookId=?";
+            stm = conn.prepareStatement(sqlQuery);
+            stm.setInt(1,mem_id);
+            stm.setInt(2,book_id);
+            stm.executeUpdate();
+            System.out.println("deleted........successfully");
+        }
+        finally {
+            Close(conn,stm,null);
+        }
+    }
 
     private void Close(Connection mConnection, Statement mStatement, ResultSet mResultSet) {
         try {

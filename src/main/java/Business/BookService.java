@@ -16,27 +16,27 @@ public class BookService {
         bookDA = new BookDA();
     }
 
-    public ArrayList<Book> FindAllServ() throws SQLException{
+    public ArrayList<Book> FindAllBookServ() throws SQLException{
         return  bookDA.FindAll();
     }
 
-    public Book FindByIdServ(int req_id) throws SQLException{
+    public Book FindBookByIdServ(int req_id) throws SQLException{
         return  bookDA.FindById(req_id);
     }
 
-    public Book FindByNameServ(String name) throws SQLException{
+    public Book FindBookByNameServ(String name) throws SQLException{
         return bookDA.FindByName(name);
     }
 
-    public void SaveServ (Book book) throws SQLException{
+    public void SaveBookServ(Book book) throws SQLException{
         bookDA.Save(book);
     }
 
-    public void UpdateServ (Book book) throws SQLException{
+    public void UpdateBookServ(Book book) throws SQLException{
         bookDA.Update(book);
     }
 
-    public boolean Delete(int req_id) throws SQLException{
+    public boolean DeleteBook (int req_id) throws SQLException{
         return bookDA.Delete(req_id);
     }
 

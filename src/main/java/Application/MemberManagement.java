@@ -31,6 +31,15 @@ public class MemberManagement {
 //
 //        memServ.SaveServ(new Member(3,"Mohamed Hassan","+201294702744","mohhass543n@yahoo.com"));
 
+        // Adding books to member
+        memServ.addFavBooksServ(4,12);
+//        memServ.addFavBooksServ(2,13);
+        // show fav Books for required member
+        memServ.showFavBooksServPrinted(2);
+        // Delete a fav book for member
+//        memServ.deleteBooksServ(1,14);
+
+
     }
 
 }

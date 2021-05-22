@@ -68,7 +68,6 @@ public class Member {
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", books=" + books +
                 '}';
     }
 }

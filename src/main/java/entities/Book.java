@@ -68,7 +68,6 @@ public class Book {
                 ", name='" + name + '\'' +
                 ", isbn=" + isbn +
                 ", category='" + category + '\'' +
-                ", members=" + members +
                 '}';
     }
 }
