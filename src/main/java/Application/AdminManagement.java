@@ -1,7 +1,7 @@
 package Application;
 
 import Business.AdminService;
-import DAO.MemberMangement;
+import DAO.AdminDA;
 import entities.Admin;
 
 import java.sql.SQLException;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class AdminManagement {
     public static void main(String[] args) throws SQLException{
-        MemberMangement ada = new MemberMangement();
+        AdminDA ada = new AdminDA();
         // Find All
         ArrayList<Admin> adList = ada.FindAll();
         System.out.println("FindALL:>>");

@@ -6,7 +6,7 @@ import entities.Admin;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class MemberMangement implements BaseDA<Admin> {
+public class AdminDA implements BaseDA<Admin> {
 
     @Override
     public ArrayList<Admin> FindAll() throws SQLException{
